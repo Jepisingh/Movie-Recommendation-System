@@ -9,8 +9,8 @@ st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wid
 @st.cache_data
 def load_and_process():
     # 1. Load CSV files
-    movies = pd.read_csv("tmdb_5000_movies.csv")
-    credits = pd.read_csv("tmdb_5000_credits.csv")
+    movies = pd.read_csv("tmdb_5000_movies.csv.zip")
+    credits = pd.read_csv("tmdb_5000_credits.csv.zip")
 
     # 2. Merge on title
     movies = movies.merge(credits, on="title")
@@ -122,3 +122,4 @@ if st.button("Recommend"):
         st.subheader(f"Movies similar to **{selected_movie}**:")
         for i, title in enumerate(recommendations, start=1):
             st.write(f"{i}. ⭐ {title}")
+
