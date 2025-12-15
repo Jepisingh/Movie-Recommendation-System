@@ -63,8 +63,8 @@ st.markdown("""
 # --- Data Loading ---
 @st.cache_data
 def load_and_process_data():
-    movies = pd.read_csv('tmdb_5000_movies.csv')
-    credits = pd.read_csv('tmdb_5000_credits.csv')
+    movies = pd.read_csv('tmdb_5000_movies.csv.zip')
+    credits = pd.read_csv('tmdb_5000_credits.csv.zip')
     
     movies = movies.merge(credits, on='title')
     movies = movies[['movie_id', 'title', 'overview', 'genres', 'keywords', 'cast', 'crew', 'vote_average']]
@@ -165,3 +165,4 @@ if st.button('Show Recommendations'):
             st.image(posters[idx], use_container_width=True)
             st.markdown(f"**{names[idx]}**")
             st.markdown(f"<span class='rating'>⭐ {ratings[idx]}/10</span>", unsafe_allow_html=True)
+
